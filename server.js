@@ -2,7 +2,7 @@ const express = require("express");
 const cors = require("cors");
 const morgan = require("morgan");
 const mongoose = require("mongoose");
-
+const userRoute = require("./routes/userRoute")
 const app = express();
 
 //app middlewares
@@ -16,6 +16,7 @@ app.use(cors());
 app.get("/", (req, res) => {
   res.send("welcome to my kingdom");
 });
+app.use("/users", userRoute);
 //app routers
 
 const PORT = process.env.PORT || 4000;
