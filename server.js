@@ -3,6 +3,7 @@ const cors = require("cors");
 const morgan = require("morgan");
 const mongoose = require("mongoose");
 const userRoute = require("./routes/userRoute")
+const checkinoutRoute = require("./routes/checkInOutRoute");
 const app = express();
 
 //app middlewares
@@ -17,6 +18,7 @@ app.get("/", (req, res) => {
   res.send("welcome to my kingdom");
 });
 app.use("/users", userRoute);
+app.use("/checkin",checkinoutRoute)
 //app routers
 
 const PORT = process.env.PORT || 4000;
