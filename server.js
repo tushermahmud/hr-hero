@@ -4,6 +4,7 @@ const morgan = require("morgan");
 const mongoose = require("mongoose");
 const userRoute = require("./routes/userRoute")
 const checkinoutRoute = require("./routes/checkInOutRoute");
+const leaveRoute = require("./routes/leaveRoute")
 const app = express();
 
 //app middlewares
@@ -19,6 +20,7 @@ app.get("/", (req, res) => {
 });
 app.use("/users", userRoute);
 app.use("/checkin",checkinoutRoute)
+app.use("/leave", leaveRoute);
 //app routers
 
 const PORT = process.env.PORT || 4000;
