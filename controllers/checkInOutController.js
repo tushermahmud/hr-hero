@@ -23,7 +23,7 @@ const checkIn = async (req, res) => {
           checkout: null,
         });
         let checkedInSave = newCheckIn.save();
-        return res.status(200).json(checkedInSave);
+        return res.status(200).json({message:"you have successfully checked in!"});
       } else {
         return res.status(400).json({
           message: "you need to checkout to checkin again!",
@@ -43,8 +43,7 @@ const checkout = async (req, res) => {
     let checkedIn = await CheckInOut.find({ user: req.body.user }).sort(
       "-checkin"
     );
-    console.log(checkedIn[0].checkout);
-    if (!checkedIn[0].checkout) {
+    if (checkedIn.length&&!checkedIn[0].checkout) {
       const checkoutDateTime = Date.now();
       let checkoutForExistingCheckin = await CheckInOut.findOneAndUpdate(
         { checkin: checkedIn[0].checkin },
@@ -58,9 +57,10 @@ const checkout = async (req, res) => {
       });
     }
   } catch (error) {
-    return res.status(500).json({
-      error: error.message,
-    });
+    console.log(error)
+    // return res.status(500).json({
+    //   error: error.message,
+    // });
   }
 };
 module.exports = {
