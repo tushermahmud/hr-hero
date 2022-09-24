@@ -20,8 +20,8 @@ app.get("/", (req, res) => {
   res.send("welcome to my kingdom");
 });
 app.use("/users", userRoute);
-app.use("/checkin",checkinoutRoute)
-app.use("/leave", leaveRoute);
+app.use("/",checkinoutRoute)
+app.use("/", leaveRoute);
 app.use("/", reportRoute);
 
 //app routers
