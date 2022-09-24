@@ -31,7 +31,6 @@ const dailyReport = async (req, res) => {
 const weeklyReport = async (req, res) => {
   let startDate = req.body.startDate;
   let userId = req.params.userId;
-  console.log(startDate);
   const result = CheckInOut.aggregate([
     {
       $match: {
@@ -43,7 +42,7 @@ const weeklyReport = async (req, res) => {
       },
     },
   ]).exec((err, result) => {
-    console.log(result);
+    res.json(result)
   });
 };
 const getBeginningOfTheWeek = (now) => {
